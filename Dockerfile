@@ -3,6 +3,7 @@ FROM alpine:latest
 WORKDIR /app
 RUN apk add --no-cache ca-certificates unzip
 
+ARG PB_VERSION=0.22.4
 
 # Add the Pocketbase executable
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
