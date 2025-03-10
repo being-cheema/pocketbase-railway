@@ -1,9 +1,11 @@
 FROM alpine:latest
 
 WORKDIR /app
+RUN apk add --no-cache ca-certificates unzip
+
 
 # Add the Pocketbase executable
-ADD https://github.com/pocketbase/pocketbase/releases/download/v0.XX.X/pocketbase_0.XX.X_linux_amd64.zip /tmp/pb.zip
+ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /app/ && rm /tmp/pb.zip
 RUN chmod +x /app/pocketbase
 
